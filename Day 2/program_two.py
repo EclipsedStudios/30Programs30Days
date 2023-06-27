@@ -6,7 +6,7 @@ def renamer(name):
     folder = input("Enter the folder name: ")
     for count, filename in enumerate(os.listdir(folder)):
         dst = f"{folder}\{name}_{str(count)}.jpg"
-        src =f"{folder}/{filename}"  # foldername/filename, if .py file is outside folder         
+        src =f"{folder}\{filename}"     
         os.rename(src, dst)
 
 name = input("Enter the intended filename: ")
