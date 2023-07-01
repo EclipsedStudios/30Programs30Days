@@ -34,7 +34,7 @@ def guess_number():
             print("Invalid input. Please try again.")
             continue
 
-    print(f"Thanks for playing! You guess correctly {attempts} time(s) before failing!")
+    print(f"Thanks for playing! You guessed correctly {attempts} time(s) before failing!")
 
 
 guess_number()
