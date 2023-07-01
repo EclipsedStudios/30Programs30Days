@@ -1,5 +1,5 @@
 # 30Programs30Days
-Creating a program (C#, React, and Python) each day for 30 days
+Creating a program each day for 30 days
 
 ## Day 1: Python QR Coder
 Develop a Python program that generates QR codes from a given input.
