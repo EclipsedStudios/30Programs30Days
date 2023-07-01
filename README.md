@@ -13,8 +13,8 @@ Build a basic calculator using C# that performs arithmetic operations.
 ## Day 4: Python Password Generator
 Create a Python program that generates random passwords with customizable criteria.
 
-## Day 5: C# Contact Manager
-Develop a contact management system in C# that allows users to add, edit, and delete contacts.
+## Day 5: Python High Low Game
+A game where you guess if the next number is higher or lower.
 
 ## Day 6: Python Image Resizer
 Write a Python script to resize images to specific dimensions.
