@@ -1,41 +1,45 @@
 import random
 
-def guess_number():
+def secure_input(prompt, valid_responses=None):
+    while True:
+        response = input(prompt).lower()[0]
+        if valid_responses is None or response in valid_responses:
+            return response
+        print("Invalid input. Please try again.")
+
+def generate_number(current_number=None):
     random_generator = random.SystemRandom()
-    number = random_generator.randint(1, 100)
+    output = random_generator.randint(1, 100)
+    if(output == current_number):
+        output = generate_number(output)
+    return output
+
+def process_guess(current_number, guess):
+    new_number = generate_number(current_number)
+    if (guess == 'h' and new_number > current_number) or (guess == 'l' and new_number < current_number):
+        return True, new_number
+    return False, new_number
+
+def play_game():
+    print("Welcome! This game is called High Low...")
+    number = generate_number()
+    print(f"Your starting number is {number}. Is the next number higher or lower?")
+
     attempts = 0
 
-    print("Welcome to the High Low!")
-    print(f"Your starting number is {number}. Is the next number higher or lower?")
-    print("Enter 'h' for higher, 'l' for lower, or 'q' to quit.")
-    
     while True:
-        guess = input("Enter your guess: ")
-        new_number = random_generator.randint(number, 100)
+        guess = secure_input("Enter 'h' for higher, 'l' for lower, or 'q' to quit: ", ['h', 'l', 'q'])
         if guess == 'q':
             break
-        elif guess == 'h':
-            if new_number > number:
-                print(f"Correct! The new number is {new_number}. Is the next number higher or lower?")
-                number = new_number
-                attempts += 1
-            else:
-                print(f"Wrong! The number was {new_number}.")
-                break
-        elif guess == 'l':
-            if new_number < number:
-                print(f"Correct! The new number is {new_number}. Is the next number higher or lower?")
-                number = new_number
-                attempts += 1
-            else:
-                print(f"Wrong! The number was {new_number}.")
-                break
+        correct, number = process_guess(number, guess)
+        if correct:
+            print(f"Correct! The new number is {number}.")
+            attempts += 1
         else:
-            print("Invalid input. Please try again.")
-            continue
+            print(f"Wrong! The number was {number}.")
+            break
 
-    print(f"Thanks for playing! You guessed correctly {attempts} time(s) before failing!")
+    print(f"Thanks for playing! You guessed correctly {attempts} time(s).")
 
-
-guess_number()
-
+if __name__ == "__main__":
+    play_game()
